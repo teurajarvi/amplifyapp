@@ -8,6 +8,16 @@ https://aws.amazon.com/getting-started/hands-on/build-react-app-amplify-graphql/
 
 > npx create-react-app amplifyapp
 
+# How the Amplify CLI was initially created
+
+> npm install -g @aws-amplify/cli
+
+# How the Amplify CLI was initially configured
+
+See the video: https://www.youtube.com/watch?v=fWbM5DLh25U
+
+> amplify configure
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
