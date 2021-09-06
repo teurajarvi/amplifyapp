@@ -1,5 +1,7 @@
 # amplifyapp
 
+React App for learning a Single Page Web App Hosting using ASW Amplify
+
 # How the amplifyapp was initially created
 
 > npx create-react-app amplifyapp
