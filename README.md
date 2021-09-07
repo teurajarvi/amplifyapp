@@ -4,15 +4,15 @@ React App for learning a Single Page Web App Hosting using ASW Amplify.
 Getting Started with AWS, Create a simple web application using AWS Amplify, Build a Full-Stack React Application example used:
 https://aws.amazon.com/getting-started/hands-on/build-react-app-amplify-graphql/
 
-# How the React amplifyapp was initially created
+## How the React amplifyapp was initially created
 
 > npx create-react-app amplifyapp
 
-# How the AWS Amplify CLI was initially created
+## How the AWS Amplify CLI was initially created
 
 > npm install -g @aws-amplify/cli
 
-# How the AWS Amplify CLI was initially configured (frontend)
+## How the AWS Amplify CLI was initially configured (frontend)
 
 See the video: https://www.youtube.com/watch?v=fWbM5DLh25U
 
