@@ -168,6 +168,91 @@ The frontend (main) will now be connected to the backend (staging) . These chang
 
 > git push origin main
 
+# Create a GaphGL API and database
+
+> amplify add api
+
+? Please select from one of the below mentioned services: GraphQL
+? Provide API name: notesapp
+? Choose the default authorization type for the API: API Key
+? Enter a description for the API key: demo
+? After how many days from now the API key should expire (1-365): 7
+? Do you want to configure advanced settings for the GraphQL API No, I am done.
+? Do you have an annotated GraphQL schema? No
+? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)
+
+The following types do not have '@auth' enabled. Consider using @auth with @model - Todo
+Learn more about @auth here: https://docs.amplify.aws/cli/graphql-transformer/auth
+
+GraphQL schema compiled successfully.
+
+Edit your schema at C:\Users\jp.teurajarvi\github\AWS\amplifyapp\amplify\backend\api\notesapp\schema.graphql or place .graphql files in a directory at C:\Users\jp.teurajarvi\github\AWS\amplifyapp\amplify\backend\api\notesapp\schema
+? Do you want to edit the schema now? (y/N)
+
+Edit the file in your editor: C:\Users\jp.teurajarvi\github\AWS\amplifyapp\amplify\backend\api\notesapp\schema.graphql
+Successfully added resource notesapp locally
+
+Some next steps:
+"amplify push" will build all your local backend resources and provision it in the cloud
+"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+
+## Deploy the API
+
+> amplify push --y
+
+This will do 3 things:
+
+Create the AppSync API
+Create a DynamoDB table
+Create the local GraphQL operations in a folder located at src/graphql that you can use to query the API
+To view the GraphQL API in your account at any time, run the following command:
+
+> amplify console api
+
+Choose GraphQL
+
+# Add Storege
+
+> amplify add storage
+
+? Please select from one of the below mentioned services: Content (Images, audio, video, etc.)
+? Please provide a friendly name for your resource that will be used to label this category in the project: imagestorage
+? Please provide bucket name: <your-unique-bucket-name>
+? Who should have access: Auth users only
+? What kind of access do you want for Authenticated users? (Press <space> to select, <a> to toggle all, <i> to invert selection)
+(_) create/update
+(_) read
+(\*) delete
+? Do you want to add a Lambda Trigger for your S3 Bucket? N
+
+✅ Successfully added resource imagestorage locally
+
+⚠️ If a user is part of a user pool group, run "amplify update storage" to enable IAM group policies for CRUD operations
+✅ Some next steps:
+"amplify push" builds all of your local backend resources and provisions them in the cloud
+"amplify publish" builds all of your local backend and front-end resources (if you added hosting category) and provisions them in the cloud
+
+## Update the GraphQL schema
+
+Next, open amplify/backend/api/notesapp/schema.graphql and update it with the following schema:
+
+type Note @model {
+id: ID!
+name: String!
+description: String
+image: String
+}
+
+## Deploy storage service and API updates
+
+> amplify push --y
+
+√ Generated GraphQL operations successfully and saved at src\graphql
+√ All resources are updated in the cloud
+
+GraphQL endpoint: https://ehe2tlg4gnd63cq32fcl5s7vpu.appsync-api.eu-central-1.amazonaws.com/graphql
+GraphQL API KEY: da2-c7japuus6bbjzgyhka4vl7yoga
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
