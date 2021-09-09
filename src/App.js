@@ -7,6 +7,7 @@ import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
+//import { notify } from "react-notify-toast";
 
 const initialFormState = { name: "", description: "" };
 
@@ -34,7 +35,7 @@ function App() {
       return;
     }
     const file = e.target.files[0];
-    setFormData({ ...formData, image: file.name });
+    setFormData({ ...formData, image: file.name, name: file.name });
     await Storage.put(file.name, file);
     myFetchNotes();
   }
@@ -45,6 +46,8 @@ function App() {
 
   async function myCreateNote() {
     if (!formData.name || !formData.description) {
+      console.log(formData);
+      console.log("no name or description");
       return;
     }
 
@@ -62,8 +65,11 @@ function App() {
   }
 
   async function myDeleteNote({ id }) {
+    console.log(id);
+    console.log(notes);
     const newNotesArray = notes.filter((note) => note.id !== id);
     setNotes(newNotesArray);
+    console.log(newNotesArray);
     await API.graphql({
       query: deleteNoteMutation,
       variables: { input: { id } },
@@ -92,7 +98,13 @@ function App() {
           <div key={note.id || note.name}>
             <h2>{note.name}</h2>
             <p>{note.description}</p>
-            <button onClick={() => myDeleteNote(note)}>Delete note</button>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                myDeleteNote(note);
+              }}>
+              Delete note
+            </button>
             {note.image && (
               <img alt='note' src={note.image} style={{ width: 400 }} />
             )}
