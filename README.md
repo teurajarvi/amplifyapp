@@ -22,29 +22,30 @@ See the video: https://www.youtube.com/watch?v=fWbM5DLh25U
 
 - AWS -> All apps -> amplifyapp -> Backend environments -> Get started
 - After the AWS creates the backend -> Open admin UI
-- Go to AWS Amplify Console Backend environments tab and open the "Local setup instructions". Copy the command to your clipboard and open the terminal on your computer. f.e "amplify pull --appId d2h86h7rfyr6cq --envName staging". You will see "Opening link: https://eu-central-1.admin.amplifyapp.com/admin/d2h86h7rfyr6cq/staging/verify/
-  \ Continue in browser to log in…" and in Browser "Are you sur
-  e you want to login to the Amplify CLI?". Click YES and go back to your terminal window.
-- Select your preferences:
-  ? Choose your default editor: Visual Studio Code
-  ? Choose the type of app that you're building: javascript
-  ? What javascript framework are you using: react
-  ? Source Directory Path: src
-  ? Distribution Directory Path: build
-  ? Build Command: npm run-script build
-  ? Start Command: npm run-script start
-  ? Do you plan on modifying this backend? Y
-- Finally you see: "\ Fetching updates to backend environment: staging from the cloud. Successfully pulled backend environment staging from the cloud.
-  Run 'amplify pull' to sync future upstream changes."
+- Go to AWS Amplify Console Backend environments tab and open the "Local setup instructions". Copy the command to your clipboard and open the terminal on your computer. f.e
+  -- "amplify pull --appId d2h86h7rfyr6cq --envName staging".
+  -- _Opening link: https://eu-central-1.admin.amplifyapp.com/admin/d2h86h7rfyr6cq/staging/verify/_
+  -- _\ Continue in browser to log in…_ and in Browser _Are you sure you want to login to the Amplify CLI?._
+  -- Click YES and go back to your terminal window.
+- _Select your preferences:_
+  -- _? Choose your default editor: Visual Studio Code_
+  -- _? Choose the type of app that you're building: javascript_
+  -- _? What javascript framework are you using: react_
+  -- _? Source Directory Path: src_
+  -- _? Distribution Directory Path: build_
+  -- _? Build Command: npm run-script build_
+  -- _? Start Command: npm run-script start_
+  -- _? Do you plan on modifying this backend? Y_
+- _\ Fetching updates to backend environment: staging from the cloud. Successfully pulled backend environment staging from the cloud._
+  _Run 'amplify pull' to sync future upstream changes._
 
-# To view your Amplify project in the dashboard at any time you can now run the following command:
+## To view your Amplify project in the dashboard at any time you can now run the following command:
 
 > amplify console
 
-You will see then the options:
-"? Which site do you want to open? ...
-Amplify admin UI
-Amplify console"
+- _"? Which site do you want to open? ..._
+- _Amplify admin UI_
+- _Amplify console"_
 
 # Adding the authentication to the app (amplifyapp)
 
@@ -56,36 +57,39 @@ Amplify console"
 
 > amplify add auth
 
-Using service: Cognito, provided by: awscloudformation
+_Using service: Cognito, provided by: awscloudformation_
 
-The current configured provider is Amazon Cognito.
+_The current configured provider is Amazon Cognito._
 
-Do you want to use the default authentication and security configuration? (Use arrow keys)
-Default configuration
-Default configuration with Social Provider (Federation)
-Manual configuration
-I want to learn more.
+- _Do you want to use the default authentication and security configuration? (Use arrow keys)_
+  -- _Default configuration_
+  -- _Default configuration with Social Provider (Federation)_
+  -- _Manual configuration_
+  -- _I want to learn more._
+
 Select: Default configuration
 
-Warning: you will not be able to edit these selections.
-How do you want users to be able to sign in? (Press <space> to select, <a> to toggle all, <i> to invert selection)
-( ) Email
-(\*) Username
-( ) Phone number
+- _Warning: you will not be able to edit these selections._
+- _How do you want users to be able to sign in? (Press <space> to select, <a> to toggle all, <i> to invert selection)_
+  -- _( ) Email_
+  -- _(\*) Username_
+  -- _( ) Phone number_
+
 Select: Username
 
-Do you want to configure advanced settings? (Use arrow keys)
-No, I am done.
-Yes, I want to make some additional changes.
+- _Do you want to configure advanced settings? (Use arrow keys)_
+  -- _No, I am done._
+  -- _Yes, I want to make some additional changes._
+
 Select: No, I am done.
 
-Successfully added auth resource amplifyapp795afc35 locally
+_Successfully added auth resource amplifyapp795afc35 locally_
 
-Some next steps:
-"amplify push" will build all your local backend resources and provision it in the cloud
-"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+- _Some next steps:_
+  -- _"amplify push" will build all your local backend resources and provision it in the cloud_
+  -- _"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud_
 
-## Deploy the authentication service configured in previous steps
+# Deploy the authentication service configured in previous steps
 
 > amplify push --y
 
@@ -93,33 +97,34 @@ Some next steps:
 
 Add following code lines to src/index.js below the last import statement:
 
-import Amplify from 'aws-amplify';
-import config from './aws-exports';
+```javascript
+import Amplify from "aws-amplify";
+import config from "./aws-exports";
 Amplify.configure(config);
+```
 
 ## Add following code lines to the src/App.js
 
----
-
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+```javascript
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
 
 function App() {
-return (
-
-<div className="App">
-<header>
-<img src={logo} className="App-logo" alt="logo" />
-<h1>We now have Auth!</h1>
-</header>
-<AmplifySignOut />
-</div>
-);
+  return (
+    <div className='App'>
+      <header>
+        <img src={logo} className='App-logo' alt='logo' />
+        <h1>We now have Auth!</h1>
+      </header>
+      <AmplifySignOut />
+    </div>
+  );
 }
 
-## export default withAuthenticator(App);
+export default withAuthenticator(App);
+```
 
 In this component we've used the withAuthenticator component. This component will scaffold out an entire user authentication flow allowing users to sign up, sign in, reset their password, and confirm sign in for multifactor authentication (MFA). We've also used the AmplifySignOut component which will render a Sign Out button.
 
@@ -133,28 +138,30 @@ Test the app locally:
 
 This will open the Amplify Console inside AWS. From the navigation sidebar, choose App settings > Build settings and modify it to add the backend section (lines 2-7 in the code below) to your amplify.yml. After making the edits, choose Save.
 
-1 version: 1
-2 backend:
-3 phases:
-4 build:
-5 commands:
-6 - '# Execute Amplify CLI with the helper script'
-7 - amplifyPush --simple
-8 frontend:
-9 phases:
-10 preBuild:
-11 commands:
-12 - yarn install
-13 build:
-14 commands:
-15 - yarn run build
-16 artifacts:
-17 baseDirectory: build
-18 files:
-19 - '**/\*'
-20 cache:
-21 paths:
-22 - node_modules/**/\*
+```javascript
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - '# Execute Amplify CLI with the helper script'
+        - amplifyPush --simple
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - yarn install
+      build:
+        commands:
+          - yarn run build
+  artifacts:
+    baseDirectory: build
+    files:
+      - '**/\*'
+  cache:
+    paths:
+      - node_modules/**/\*
+```
 
 Next, update your front end branch to point to the backend environment you just created. Under the branch name, choose Edit, and then point your master branch to the dev (staging) backend you just created. Choose Save.
 
@@ -172,29 +179,29 @@ The frontend (main) will now be connected to the backend (staging) . These chang
 
 > amplify add api
 
-? Please select from one of the below mentioned services: GraphQL
-? Provide API name: notesapp
-? Choose the default authorization type for the API: API Key
-? Enter a description for the API key: demo
-? After how many days from now the API key should expire (1-365): 7
-? Do you want to configure advanced settings for the GraphQL API No, I am done.
-? Do you have an annotated GraphQL schema? No
-? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)
+-- _? Please select from one of the below mentioned services: **GraphQL**_
+-- _? Provide API name: **notesapp**_
+-- _? Choose the default authorization type for the API: **API Key**_
+-- _? Enter a description for the API key: **demo**_
+-- _? After how many days from now the API key should expire (1-365): **7**_
+-- _? Do you want to configure advanced settings for the GraphQL API: **No, I am done.**_
+-- _? Do you have an annotated GraphQL schema? **No**_
+-- _? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)_
 
-The following types do not have '@auth' enabled. Consider using @auth with @model - Todo
-Learn more about @auth here: https://docs.amplify.aws/cli/graphql-transformer/auth
+_The following types do not have '@auth' enabled. Consider using @auth with @model - Todo_
+_Learn more about @auth here: https://docs.amplify.aws/cli/graphql-transformer/auth_
 
-GraphQL schema compiled successfully.
+_GraphQL schema compiled successfully._
 
-Edit your schema at C:\Users\jp.teurajarvi\github\AWS\amplifyapp\amplify\backend\api\notesapp\schema.graphql or place .graphql files in a directory at C:\Users\jp.teurajarvi\github\AWS\amplifyapp\amplify\backend\api\notesapp\schema
-? Do you want to edit the schema now? (y/N)
+_Edit your schema at \amplifyapp\amplify\backend\api\notesapp\schema.graphql or place .graphql files in a directory at \amplifyapp\amplify\backend\api\notesapp\schema_
+_? Do you want to edit the schema now? (y/N)_
 
-Edit the file in your editor: C:\Users\jp.teurajarvi\github\AWS\amplifyapp\amplify\backend\api\notesapp\schema.graphql
-Successfully added resource notesapp locally
+_Edit the file in your editor: \amplifyapp\amplify\backend\api\notesapp\schema.graphql_
+_Successfully added resource notesapp locally_
 
-Some next steps:
-"amplify push" will build all your local backend resources and provision it in the cloud
-"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud
+_Some next steps:_
+_"amplify push" will build all your local backend resources and provision it in the cloud_
+_"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud_
 
 ## Deploy the API
 
@@ -202,9 +209,10 @@ Some next steps:
 
 This will do 3 things:
 
-Create the AppSync API
-Create a DynamoDB table
-Create the local GraphQL operations in a folder located at src/graphql that you can use to query the API
+- Create the AppSync API
+- Create a DynamoDB table
+- Create the local GraphQL operations in a folder located at src/graphql that you can use to query the API
+
 To view the GraphQL API in your account at any time, run the following command:
 
 > amplify console api
@@ -215,43 +223,57 @@ Choose GraphQL
 
 > amplify add storage
 
-? Please select from one of the below mentioned services: Content (Images, audio, video, etc.)
-? Please provide a friendly name for your resource that will be used to label this category in the project: imagestorage
-? Please provide bucket name: <your-unique-bucket-name>
-? Who should have access: Auth users only
-? What kind of access do you want for Authenticated users? (Press <space> to select, <a> to toggle all, <i> to invert selection)
-(_) create/update
-(_) read
-(\*) delete
-? Do you want to add a Lambda Trigger for your S3 Bucket? N
+_? Please select from one of the below mentioned services: **Content (Images, audio, video, etc.)**_
+_? Please provide a friendly name for your resource that will be used to label this category in the project: **imagestorage**_
+_? Please provide bucket name: **<your-unique-bucket-name>**_
+_? Who should have access: **Auth users only**_
+_? What kind of access do you want for Authenticated users? (Press <space> to select, **<a> to toggle all**, <i> to invert selection)_
+_(\*) create/update_
+_(\*) read_
+_(\*) delete_
+_? Do you want to add a Lambda Trigger for your S3 Bucket?_ **N**
 
-✅ Successfully added resource imagestorage locally
+✅ _Successfully added resource imagestorage locally_
 
-⚠️ If a user is part of a user pool group, run "amplify update storage" to enable IAM group policies for CRUD operations
-✅ Some next steps:
-"amplify push" builds all of your local backend resources and provisions them in the cloud
-"amplify publish" builds all of your local backend and front-end resources (if you added hosting category) and provisions them in the cloud
+⚠️ _If a user is part of a user pool group, run "amplify update storage" to enable IAM group policies for CRUD operations_
+✅ _Some next steps:_
+_"amplify push" builds all of your local backend resources and provisions them in the cloud_
+_"amplify publish" builds all of your local backend and front-end resources (if you added hosting category) and provisions them in the cloud_
 
 ## Update the GraphQL schema
 
 Next, open amplify/backend/api/notesapp/schema.graphql and update it with the following schema:
 
+```javascript
 type Note @model {
-id: ID!
-name: String!
-description: String
-image: String
+  id: ID!
+  name: String!
+  description: String
+  image: String
 }
+```
 
 ## Deploy storage service and API updates
 
+Now that the storage service has been configured locally and we've updated the GraphQL schema, we can deploy the updates by running the Amplify push command:
+
 > amplify push --y
 
-√ Generated GraphQL operations successfully and saved at src\graphql
-√ All resources are updated in the cloud
+_√ Generated GraphQL operations successfully and saved at src\graphql_
+_√ All resources are updated in the cloud_
 
-GraphQL endpoint: https://ehe2tlg4gnd63cq32fcl5s7vpu.appsync-api.eu-central-1.amazonaws.com/graphql
-GraphQL API KEY: da2-c7japuus6bbjzgyhka4vl7yoga
+_GraphQL endpoint: https://ehe2tlg4gnd63cq32fcl5s7vpu.appsync-api.eu-central-1.amazonaws.com/graphql_
+_GraphQL API KEY: da2-c7japuus6bbjzgyhka4vl7yoga_
+
+# Set Amplify CLI version to latest
+
+Your build may fail if the Amplify CLI version is not the latest. You can set the latest version by AWS Amplify -> App settings -> Build settings -> Build image settings -> Live package updates -> Package: Amplify CLI -> Version: latests
+
+# Add a service role to the Amplify console
+
+The Amplify Console requires permissions to deploy backend resources with your front end. You use a service role to accomplish this. A service role is the AWS Identity and Access Management (IAM) role that Amplify Console assumes when calling other services on your behalf.
+
+https://docs.aws.amazon.com/amplify/latest/userguide/how-to-service-role-amplify-console.html
 
 # Getting Started with Create React App
 
