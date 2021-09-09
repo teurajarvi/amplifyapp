@@ -11,22 +11,10 @@ import {
 const initialFormState = { name: "", description: "" };
 
 function App() {
-  async function onChange(e) {
-    if (!e.target.files[0]) return;
-    const file = e.target.files[0];
-    setFormData({ ...formData, image: file.name });
-    await Storage.put(file.name, file);
-    fetchNotes();
-  }
-
   const [notes, setNotes] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
-  useEffect(() => {
-    fetchNotes();
-  }, []);
-
-  async function fetchNotes() {
+  async function myFetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
     const notesFromAPI = apiData.data.listNotes.items;
     await Promise.all(
@@ -41,12 +29,30 @@ function App() {
     setNotes(apiData.data.listNotes.items);
   }
 
-  async function createNote() {
-    if (!formData.name || !formData.description) return;
+  async function onChange(e) {
+    if (!e.target.files[0]) {
+      return;
+    }
+    const file = e.target.files[0];
+    setFormData({ ...formData, image: file.name });
+    await Storage.put(file.name, file);
+    myFetchNotes();
+  }
+
+  useEffect(() => {
+    myFetchNotes();
+  }, []);
+
+  async function myCreateNote() {
+    if (!formData.name || !formData.description) {
+      return;
+    }
+
     await API.graphql({
       query: createNoteMutation,
       variables: { input: formData },
     });
+
     if (formData.image) {
       const image = await Storage.get(formData.image);
       formData.image = image;
@@ -55,7 +61,7 @@ function App() {
     setFormData(initialFormState);
   }
 
-  async function deleteNote({ id }) {
+  async function myDeleteNote({ id }) {
     const newNotesArray = notes.filter((note) => note.id !== id);
     setNotes(newNotesArray);
     await API.graphql({
@@ -80,13 +86,13 @@ function App() {
         placeholder='Note description'
         value={formData.description}
       />
-      <button onClick={createNote}>Create Note</button>
+      <button onClick={myCreateNote}>Create Note</button>
       <div style={{ marginBottom: 30 }}>
         {notes.map((note) => (
           <div key={note.id || note.name}>
             <h2>{note.name}</h2>
             <p>{note.description}</p>
-            <button onClick={() => deleteNote(note)}>Delete note</button>
+            <button onClick={() => myDeleteNote(note)}>Delete note</button>
             {note.image && (
               <img alt='note' src={note.image} style={{ width: 400 }} />
             )}
