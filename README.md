@@ -23,19 +23,19 @@ See the video: https://www.youtube.com/watch?v=fWbM5DLh25U
 - AWS -> All apps -> amplifyapp -> Backend environments -> Get started
 - After the AWS creates the backend -> Open admin UI
 - Go to AWS Amplify Console Backend environments tab and open the "Local setup instructions". Copy the command to your clipboard and open the terminal on your computer. f.e
-  -- "amplify pull --appId d2h86h7rfyr6cq --envName staging".
-  -- _Opening link: https://eu-central-1.admin.amplifyapp.com/admin/d2h86h7rfyr6cq/staging/verify/_
-  -- _\ Continue in browser to log in…_ and in Browser _Are you sure you want to login to the Amplify CLI?._
-  -- Click YES and go back to your terminal window.
+  .. _"amplify pull --appId d2h86h7rfyr6cq --envName staging"._
+  .. _Opening link: https://eu-central-1.admin.amplifyapp.com/admin/d2h86h7rfyr6cq/staging/verify/_
+  .. _Continue in browser to log in…_ and in Browser _Are you sure you want to login to the Amplify CLI?._
+  .. Click YES and go back to your terminal window.
 - _Select your preferences:_
-  -- _? Choose your default editor: Visual Studio Code_
-  -- _? Choose the type of app that you're building: javascript_
-  -- _? What javascript framework are you using: react_
-  -- _? Source Directory Path: src_
-  -- _? Distribution Directory Path: build_
-  -- _? Build Command: npm run-script build_
-  -- _? Start Command: npm run-script start_
-  -- _? Do you plan on modifying this backend? Y_
+  .. _? Choose your default editor: Visual Studio Code_
+  .. _? Choose the type of app that you're building: javascript_
+  .. _? What javascript framework are you using: react_
+  .. _? Source Directory Path: src_
+  .. _? Distribution Directory Path: build_
+  .. _? Build Command: npm run-script build_
+  .. _? Start Command: npm run-script start_
+  .. _? Do you plan on modifying this backend? Y_
 - _\ Fetching updates to backend environment: staging from the cloud. Successfully pulled backend environment staging from the cloud._
   _Run 'amplify pull' to sync future upstream changes._
 
@@ -43,9 +43,9 @@ See the video: https://www.youtube.com/watch?v=fWbM5DLh25U
 
 > amplify console
 
-- _"? Which site do you want to open? ..._
-- _Amplify admin UI_
-- _Amplify console"_
+_"? Which site do you want to open? ..._
+_Amplify admin UI_
+_Amplify console"_
 
 # Adding the authentication to the app (amplifyapp)
 
@@ -61,33 +61,33 @@ _Using service: Cognito, provided by: awscloudformation_
 
 _The current configured provider is Amazon Cognito._
 
-- _Do you want to use the default authentication and security configuration? (Use arrow keys)_
-  -- _Default configuration_
-  -- _Default configuration with Social Provider (Federation)_
-  -- _Manual configuration_
-  -- _I want to learn more._
+_Do you want to use the default authentication and security configuration? (Use arrow keys)_
+_Default configuration_
+_Default configuration with Social Provider (Federation)_
+_Manual configuration_
+_I want to learn more._
 
 Select: Default configuration
 
-- _Warning: you will not be able to edit these selections._
-- _How do you want users to be able to sign in? (Press <space> to select, <a> to toggle all, <i> to invert selection)_
-  -- _( ) Email_
-  -- _(\*) Username_
-  -- _( ) Phone number_
+_Warning: you will not be able to edit these selections._
+_How do you want users to be able to sign in? (Press <space> to select, <a> to toggle all, <i> to invert selection)_
+_( ) Email_
+_(\*) Username_
+_( ) Phone number_
 
 Select: Username
 
-- _Do you want to configure advanced settings? (Use arrow keys)_
-  -- _No, I am done._
-  -- _Yes, I want to make some additional changes._
+_Do you want to configure advanced settings? (Use arrow keys)_
+_No, I am done._
+_Yes, I want to make some additional changes._
 
 Select: No, I am done.
 
 _Successfully added auth resource amplifyapp795afc35 locally_
 
-- _Some next steps:_
-  -- _"amplify push" will build all your local backend resources and provision it in the cloud_
-  -- _"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud_
+_Some next steps:_
+_"amplify push" will build all your local backend resources and provision it in the cloud_
+_"amplify publish" will build all your local backend and frontend resources (if you have hosting category added) and provision it in the cloud_
 
 # Deploy the authentication service configured in previous steps
 
@@ -179,14 +179,14 @@ The frontend (main) will now be connected to the backend (staging) . These chang
 
 > amplify add api
 
--- _? Please select from one of the below mentioned services: **GraphQL**_
--- _? Provide API name: **notesapp**_
--- _? Choose the default authorization type for the API: **API Key**_
--- _? Enter a description for the API key: **demo**_
--- _? After how many days from now the API key should expire (1-365): **7**_
--- _? Do you want to configure advanced settings for the GraphQL API: **No, I am done.**_
--- _? Do you have an annotated GraphQL schema? **No**_
--- _? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)_
+_? Please select from one of the below mentioned services: **GraphQL**_
+_? Provide API name: **notesapp**_
+_? Choose the default authorization type for the API: **API Key**_
+_? Enter a description for the API key: **demo**_
+_? After how many days from now the API key should expire (1-365): **7**_
+_? Do you want to configure advanced settings for the GraphQL API: **No, I am done.**_
+_? Do you have an annotated GraphQL schema? **No**_
+_? Choose a schema template: Single object with fields (e.g., “Todo” with ID, name, description)_
 
 _The following types do not have '@auth' enabled. Consider using @auth with @model - Todo_
 _Learn more about @auth here: https://docs.amplify.aws/cli/graphql-transformer/auth_
@@ -194,7 +194,7 @@ _Learn more about @auth here: https://docs.amplify.aws/cli/graphql-transformer/a
 _GraphQL schema compiled successfully._
 
 _Edit your schema at \amplifyapp\amplify\backend\api\notesapp\schema.graphql or place .graphql files in a directory at \amplifyapp\amplify\backend\api\notesapp\schema_
-_? Do you want to edit the schema now? (y/N)_
+_? Do you want to edit the schema now? (**y**/N)_
 
 _Edit the file in your editor: \amplifyapp\amplify\backend\api\notesapp\schema.graphql_
 _Successfully added resource notesapp locally_
@@ -218,6 +218,88 @@ To view the GraphQL API in your account at any time, run the following command:
 > amplify console api
 
 Choose GraphQL
+
+# Write front-end code to interact with the API
+
+Update src/App.js with the following code:
+
+```javascript
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { API } from "aws-amplify";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { listNotes } from "./graphql/queries";
+import {
+  createNote as createNoteMutation,
+  deleteNote as deleteNoteMutation,
+} from "./graphql/mutations";
+
+const initialFormState = { name: "", description: "" };
+
+function App() {
+  const [notes, setNotes] = useState([]);
+  const [formData, setFormData] = useState(initialFormState);
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+
+  async function fetchNotes() {
+    const apiData = await API.graphql({ query: listNotes });
+    setNotes(apiData.data.listNotes.items);
+  }
+
+  async function createNote() {
+    if (!formData.name || !formData.description) return;
+    await API.graphql({
+      query: createNoteMutation,
+      variables: { input: formData },
+    });
+    setNotes([...notes, formData]);
+    setFormData(initialFormState);
+  }
+
+  async function deleteNote({ id }) {
+    const newNotesArray = notes.filter((note) => note.id !== id);
+    setNotes(newNotesArray);
+    await API.graphql({
+      query: deleteNoteMutation,
+      variables: { input: { id } },
+    });
+  }
+
+  return (
+    <div className='App'>
+      <h1>My Notes App</h1>
+      <input
+        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        placeholder='Note name'
+        value={formData.name}
+      />
+      <input
+        onChange={(e) =>
+          setFormData({ ...formData, description: e.target.value })
+        }
+        placeholder='Note description'
+        value={formData.description}
+      />
+      <button onClick={createNote}>Create Note</button>
+      <div style={{ marginBottom: 30 }}>
+        {notes.map((note) => (
+          <div key={note.id || note.name}>
+            <h2>{note.name}</h2>
+            <p>{note.description}</p>
+            <button onClick={() => deleteNote(note)}>Delete note</button>
+          </div>
+        ))}
+      </div>
+      <AmplifySignOut />
+    </div>
+  );
+}
+
+export default withAuthenticator(App);
+```
 
 # Add Storege
 
@@ -264,6 +346,114 @@ _√ All resources are updated in the cloud_
 
 _GraphQL endpoint: https://ehe2tlg4gnd63cq32fcl5s7vpu.appsync-api.eu-central-1.amazonaws.com/graphql_
 _GraphQL API KEY: da2-c7japuus6bbjzgyhka4vl7yoga_
+
+## Update the React app
+
+Add
+
+```javascript
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import { API, Storage } from "aws-amplify";
+import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
+import { listNotes } from "./graphql/queries";
+import {
+  createNote as createNoteMutation,
+  deleteNote as deleteNoteMutation,
+} from "./graphql/mutations";
+
+const initialFormState = { name: "", description: "" };
+
+function App() {
+  async function onChange(e) {
+    if (!e.target.files[0]) return;
+    const file = e.target.files[0];
+    setFormData({ ...formData, image: file.name });
+    await Storage.put(file.name, file);
+    fetchNotes();
+  }
+
+  const [notes, setNotes] = useState([]);
+  const [formData, setFormData] = useState(initialFormState);
+
+  useEffect(() => {
+    fetchNotes();
+  }, []);
+
+  async function fetchNotes() {
+    const apiData = await API.graphql({ query: listNotes });
+    const notesFromAPI = apiData.data.listTodos.items;
+    await Promise.all(
+      notesFromAPI.map(async (note) => {
+        if (note.image) {
+          const image = await Storage.get(note.image);
+          note.image = image;
+        }
+        return note;
+      })
+    );
+    setNotes(apiData.data.listTodos.items);
+  }
+
+  async function createNote() {
+    if (!formData.name || !formData.description) return;
+    await API.graphql({
+      query: createNoteMutation,
+      variables: { input: formData },
+    });
+    if (formData.image) {
+      const image = await Storage.get(formData.image);
+      formData.image = image;
+    }
+    setNotes([...notes, formData]);
+    setFormData(initialFormState);
+  }
+
+  async function deleteNote({ id }) {
+    const newNotesArray = notes.filter((note) => note.id !== id);
+    setNotes(newNotesArray);
+    await API.graphql({
+      query: deleteNoteMutation,
+      variables: { input: { id } },
+    });
+  }
+
+  return (
+    <div className='App'>
+      <h1>My Notes App</h1>
+      <input
+        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        placeholder='Note name'
+        value={formData.name}
+      />
+      <input type='file' onChange={onChange} />
+      <input
+        onChange={(e) =>
+          setFormData({ ...formData, description: e.target.value })
+        }
+        placeholder='Note description'
+        value={formData.description}
+      />
+      <button onClick={createNote}>Create Note</button>
+      <div style={{ marginBottom: 30 }}>
+        {notes.map((note) => (
+          <div key={note.id || note.name}>
+            <h2>{note.name}</h2>
+            <p>{note.description}</p>
+            <button onClick={() => deleteNote(note)}>Delete note</button>
+            {note.image && (
+              <img alt='note' src={note.image} style={{ width: 400 }} />
+            )}
+          </div>
+        ))}
+      </div>
+      <AmplifySignOut />
+    </div>
+  );
+}
+
+export default withAuthenticator(App);
+```
 
 # Set Amplify CLI version to latest
 
