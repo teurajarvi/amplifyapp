@@ -7,7 +7,6 @@ import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
-//import { notify } from "react-notify-toast";
 
 const initialFormState = { name: "", description: "" };
 
@@ -46,7 +45,6 @@ function App() {
 
   async function myCreateNote() {
     if (!formData.name || !formData.description) {
-      console.log(formData);
       console.log("no name or description");
       return;
     }
@@ -65,7 +63,6 @@ function App() {
   }
 
   async function myDeleteNote({ id }) {
-    console.log(id);
     const newNotesArray = notes.filter((note) => note.id !== id);
     setNotes(newNotesArray);
     await API.graphql({
