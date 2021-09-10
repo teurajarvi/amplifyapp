@@ -41,6 +41,7 @@ export const deleteNote = /* GraphQL */ `
       name
       description
       image
+      _version
       createdAt
       updatedAt
     }
