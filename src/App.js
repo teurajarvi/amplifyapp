@@ -66,10 +66,8 @@ function App() {
 
   async function myDeleteNote({ id }) {
     console.log(id);
-    console.log(notes);
     const newNotesArray = notes.filter((note) => note.id !== id);
     setNotes(newNotesArray);
-    console.log(newNotesArray);
     await API.graphql({
       query: deleteNoteMutation,
       variables: { input: { id } },
@@ -99,8 +97,7 @@ function App() {
             <h2>{note.name}</h2>
             <p>{note.description}</p>
             <button
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={() => {
                 myDeleteNote(note);
               }}>
               Delete note
